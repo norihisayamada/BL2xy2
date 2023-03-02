@@ -8,7 +8,7 @@ import time
 
 st.title('緯度経度を平面直角座標に換算するアプリです')
 st.header('概要')
-st.write('国土地理院APIを使用し、第6系に対応しています')
+st.write('国土地理院APIを使用し、第6系のみ変換します')
 
 df = pd.DataFrame()
 
@@ -30,7 +30,7 @@ def tranceBL(df):
         params = {'latitude': row.lat, 'longitude': row.lon, "refFrame": 2, "zone": 6, 'outputType': 'json'}
 
         res = requests.get(url, params=params)
-        time.sleep(1)
+        time.sleep(1.5)
         if res.status_code == requests.codes.ok:
             print(res.json())
         lat_list.append(res.json()["OutputData"]["publicX"])
