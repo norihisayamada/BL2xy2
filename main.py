@@ -19,7 +19,7 @@ scale_list = []
 
 def readFile(file):
     if file is not None:
-        st.subheader('detail contents')
+        st.subheader('変換前の緯度経度を表示します')
         global  df
         df = pd.read_csv(file, encoding='UTF-8')
         st.write(df)
@@ -40,13 +40,14 @@ def tranceBL(df):
 
 #緯度経度（CSV形式）ファイルを選択してください
 st.subheader('緯度経度（CSV形式）ファイルを選択してください')
-uploaded_file = st.file_uploader("Choose a CSV file")
+st.text('インデックスはNO lat lonとしてください')
+st.text('数値は度単位で入力してください。入力例：35.123456, 139.123456')
+uploaded_file = st.file_uploader("ファイルを選択して下さい")
 readFile(uploaded_file)
 
 #緯度経度から平面直角座標の換算
 st.subheader('平面直角座標に変換します')
-st.text('indexはlat lonとしてください。 数値は度単位で入力してください。（例：35.123456, 139.123456）')
-if st.button('平面直角座標に変換します'):
+if st.button('変換実行'):
     tranceBL(df)
     df_new = df.copy()
     df_new['X'] = lat_list
