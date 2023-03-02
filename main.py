@@ -8,7 +8,7 @@ import time
 
 st.title('緯度経度を平面直角座標に換算するアプリです')
 st.header('概要')
-st.write('国土地理院APIを使用し、第6系のみ変換します')
+st.write('国土地理院APIを使用し、第6系の平面直角座標に変換します')
 
 df = pd.DataFrame()
 
