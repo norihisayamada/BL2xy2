@@ -39,8 +39,8 @@ def tranceBL(df):
         scale_list.append((res.json()["OutputData"]["scaleFactor"]))
 
 #緯度経度（CSV形式）ファイルを選択してください
-st.subheader('緯度経度（CSV形式）ファイルを選択してください')
-st.text('インデックスはNO lat lonとしてください')
+st.subheader('ファイルを選択してください')
+st.text('対象のファイル(CSV)のインデックスは、lat lonとしてください')
 st.text('数値は度単位で入力してください。入力例：35.123456, 139.123456')
 uploaded_file = st.file_uploader("ファイルを選択して下さい")
 readFile(uploaded_file)
