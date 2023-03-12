@@ -6,9 +6,15 @@ from streamlit_folium import folium_static
 import time
 
 
-st.title('緯度経度を平面直角座標に換算するアプリです')
-st.header('概要')
-st.write('国土地理院APIを使用し、第6系の平面直角座標に変換します')
+st.title('緯度経度を平面直角座標に変換するアプリです')
+st.header('国土地理院APIを使用し、第6系の平面直角座標に変換します')
+st.write('Pythonで記述しています。コードは下記よりダウンロード又はForkしてご利用下さい')
+st.write('https://github.com/norihisayamada/BL2xy2')
+
+st.write('サンプルデータをダウンロード')
+with open('./sample.csv') as f:
+    df = f.read()
+    st.download_button('Download sampleData', df, 'test.csv', 'text/csv')
 
 df = pd.DataFrame()
 
@@ -39,8 +45,8 @@ def tranceBL(df):
         scale_list.append((res.json()["OutputData"]["scaleFactor"]))
 
 #緯度経度（CSV形式）ファイルを選択してください
-st.subheader('ファイルを選択してください')
-st.text('対象のファイル(CSV)のインデックスは、lat lonとしてください')
+st.subheader('変換するファイルを選択してください')
+st.text('インデックスは、lat lonとしてください')
 st.text('数値は度単位で入力してください。入力例：35.123456, 139.123456')
 uploaded_file = st.file_uploader("ファイルを選択して下さい")
 readFile(uploaded_file)
